@@ -1,4 +1,37 @@
 module.exports = {
-  root: true,
-  extends: '@react-native',
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react', '@typescript-eslint', 'prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-require-imports': 'off',
+
+    // This rule is disabled because it is not necessary to specify the return type of a function
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 };
